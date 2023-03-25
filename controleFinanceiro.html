@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Planilha de Controle Financeiro</title>
+	<style>
+		table {
+			border-collapse: collapse;
+			width: 100%;
+		}
+		th, td {
+			border: 1px solid black;
+			padding: 8px;
+			text-align: left;
+		}
+		th {
+			background-color: #ddd;
+			font-weight: bold;
+		}
+	</style>
+</head>
+<body>
+	<h1>Planilha de Controle Financeiro</h1>
+	<table>
+		<thead>
+			<tr>
+				<th>Data</th>
+				<th>Descrição</th>
+				<th>Valor</th>
+			</tr>
+		</thead>
+		<tbody id="table-body">
+			<tr>
+				<td><input type="date" name="date"></td>
+				<td><input type="text" name="description"></td>
+				<td><input type="number" name="value"></td>
+			</tr>
+		</tbody>
+		<tfoot>
+			<tr>
+				<td colspan="2">Total</td>
+				<td id="grand-total"></td>
+			</tr>
+		</tfoot>
+	</table>
+	<button onclick="addRow()">Adicionar Novo Campo</button>
+	<button onclick="calculate()">Calcular</button>
+	<script>
+		function calculate() {
+			var tableBody = document.getElementById("table-body");
+			var grandTotal = 0;
+			for (var i = 0; i < tableBody.rows.length; i++) {
+				var row = tableBody.rows[i];
+				var value = parseFloat(row.cells[2].querySelector("input").value);
+				grandTotal += value;
+			}
+			document.getElementById("grand-total").innerHTML = "R$ " + grandTotal.toFixed(2);
+		}
+
+		function addRow() {
+			var tableBody = document.getElementById("table-body");
+			var newRow = document.createElement("tr");
+			newRow.innerHTML = '<td><input type="date" name="date"></td>' +
+								'<td><input type="text" name="description"></td>' +
+								'<td><input type="number" name="value"></td>';
+			tableBody.appendChild(newRow);
+		}
+	</script>
+</body>
+</html>
