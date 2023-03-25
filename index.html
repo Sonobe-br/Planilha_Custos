@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Planilha de Custos</title>
+	<style>
+		table {
+			border-collapse: collapse;
+			width: 100%;
+		}
+		th, td {
+			border: 1px solid black;
+			padding: 8px;
+			text-align: left;
+		}
+		th {
+			background-color: #ddd;
+			font-weight: bold;
+		}
+	</style>
+</head>
+<body>
+	<h1>Planilha de Custos</h1>
+	<table>
+		<thead>
+			<tr>
+				<th>Descrição</th>
+				<th>Quantidade</th>
+				<th>Preço Unitário</th>
+				<th>Total</th>
+			</tr>
+		</thead>
+		<tbody id="table-body">
+			<tr>
+				<td><input type="text" name="description"></td>
+				<td><input type="number" name="quantity"></td>
+				<td><input type="number" name="unit-price"></td>
+				<td><span class="total"></span></td>
+			</tr>
+			<tr>
+				<td><input type="text" name="description"></td>
+				<td><input type="number" name="quantity"></td>
+				<td><input type="number" name="unit-price"></td>
+				<td><span class="total"></span></td>
+			</tr>
+			<tr>
+				<td><input type="text" name="description"></td>
+				<td><input type="number" name="quantity"></td>
+				<td><input type="number" name="unit-price"></td>
+				<td><span class="total"></span></td>
+			</tr>
+			<tr>
+				<td><input type="text" name="description"></td>
+				<td><input type="number" name="quantity"></td>
+				<td><input type="number" name="unit-price"></td>
+				<td><span class="total"></span></td>
+			</tr>
+			<tr>
+				<td><input type="text" name="description"></td>
+				<td><input type="number" name="quantity"></td>
+				<td><input type="number" name="unit-price"></td>
+				<td><span class="total"></span></td>
+			</tr>
+		</tbody>
+		<tfoot>
+			<tr>
+				<td colspan="3">Total</td>
+				<td id="grand-total"></td>
+			</tr>
+		</tfoot>
+	</table>
+	<button onclick="calculate()">Calcular</button>
+	<script>
+		function calculate() {
+			var tableBody = document.getElementById("table-body");
+			var grandTotal = 0;
+			for (var i = 0; i < tableBody.rows.length; i++) {
+				var row = tableBody.rows[i];
+				var quantity = row.cells[1].querySelector("input").value;
+				var unitPrice = row.cells[2].querySelector("input").value;
+				var total = quantity * unitPrice;
+				row.cells[3].querySelector(".total").innerHTML = "R$ " + total.toFixed(2);
+				grandTotal += total;
+			}
+			document.getElementById("grand-total").innerHTML = "R$ " + grandTotal.toFixed(2);
+		}
+	</script>
+</body>
+</html>
