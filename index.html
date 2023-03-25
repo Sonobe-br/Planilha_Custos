@@ -36,30 +36,6 @@
 				<td><input type="number" name="unit-price"></td>
 				<td><span class="total"></span></td>
 			</tr>
-			<tr>
-				<td><input type="text" name="description"></td>
-				<td><input type="number" name="quantity"></td>
-				<td><input type="number" name="unit-price"></td>
-				<td><span class="total"></span></td>
-			</tr>
-			<tr>
-				<td><input type="text" name="description"></td>
-				<td><input type="number" name="quantity"></td>
-				<td><input type="number" name="unit-price"></td>
-				<td><span class="total"></span></td>
-			</tr>
-			<tr>
-				<td><input type="text" name="description"></td>
-				<td><input type="number" name="quantity"></td>
-				<td><input type="number" name="unit-price"></td>
-				<td><span class="total"></span></td>
-			</tr>
-			<tr>
-				<td><input type="text" name="description"></td>
-				<td><input type="number" name="quantity"></td>
-				<td><input type="number" name="unit-price"></td>
-				<td><span class="total"></span></td>
-			</tr>
 		</tbody>
 		<tfoot>
 			<tr>
@@ -68,6 +44,7 @@
 			</tr>
 		</tfoot>
 	</table>
+	<button onclick="addRow()">Adicionar Linha</button>
 	<button onclick="calculate()">Calcular</button>
 	<script>
 		function calculate() {
@@ -82,6 +59,16 @@
 				grandTotal += total;
 			}
 			document.getElementById("grand-total").innerHTML = "R$ " + grandTotal.toFixed(2);
+		}
+
+		function addRow() {
+			var tableBody = document.getElementById("table-body");
+			var newRow = document.createElement("tr");
+			newRow.innerHTML = '<td><input type="text" name="description"></td>' +
+								'<td><input type="number" name="quantity"></td>' +
+								'<td><input type="number" name="unit-price"></td>' +
+								'<td><span class="total"></span></td>';
+			tableBody.appendChild(newRow);
 		}
 	</script>
 </body>
