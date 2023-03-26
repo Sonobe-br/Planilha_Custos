@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Cadastro de Clientes e Fornecedores</title>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+        <script type="text/javascript">
+            $(document).ready(function(){
+                var counter = 1;
+
+                $("#add-btn").click(function(){
+                    var newRow = $("<tr>");
+                    var cols = "";
+
+                    cols += '<td><input type="text" name="cliente' + counter + '"/></td>';
+                    cols += '<td><input type="text" name="fornecedor' + counter + '"/></td>';
+
+                    newRow.append(cols);
+                    $("table").append(newRow);
+
+                    counter++;
+                });
+            });
+        </script>
+    </head>
+    <body>
+        <h1>Cadastro de Clientes e Fornecedores</h1>
+
+        <table>
+            <thead>
+                <tr>
+                    <th>Cliente</th>
+                    <th>Fornecedor</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td><input type="text" name="cliente1"/></td>
+                    <td><input type="text" name="fornecedor1"/></td>
+                </tr>
+            </tbody>
+        </table>
+
+        <button id="add-btn">Novo Cliente</button>
+        <input type="submit" value="Adicionar"/>
+    </body>
+</html>
